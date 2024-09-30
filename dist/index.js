@@ -29235,8 +29235,11 @@ const core = __importStar(__nccwpck_require__(7484));
 const github = __importStar(__nccwpck_require__(3228));
 async function run() {
     try {
-        const assignCommand = core.getInput('assign-command');
-        const token = core.getInput('github-token');
+        const token = core.getInput('token');
+        if (!token) {
+            core.setFailed('GitHub token is missing');
+            return;
+        }
         const octokit = github.getOctokit(token);
         const { context } = github;
         const issueNumber = context.payload.issue?.number;
@@ -29246,6 +29249,7 @@ async function run() {
             core.setFailed('Issue number, comment, or commenter is missing');
             return;
         }
+        const assignCommand = core.getInput('assign-command');
         if (comment.trim() === assignCommand) {
             await octokit.rest.issues.addAssignees({
                 assignees: [commenter],

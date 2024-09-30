@@ -3,8 +3,12 @@ import * as github from '@actions/github'
 
 export async function run(): Promise<void> {
   try {
-    const assignCommand = core.getInput('assign-command')
-    const token = core.getInput('github-token')
+    const token = core.getInput('token')
+
+    if (!token) {
+      core.setFailed('GitHub token is missing')
+      return
+    }
 
     const octokit = github.getOctokit(token)
     const { context } = github
@@ -18,6 +22,7 @@ export async function run(): Promise<void> {
       return
     }
 
+    const assignCommand = core.getInput('assign-command')
     if (comment.trim() === assignCommand) {
       await octokit.rest.issues.addAssignees({
         assignees: [commenter],
