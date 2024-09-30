@@ -29254,20 +29254,22 @@ async function run() {
             owner: context.repo.owner,
             repo: context.repo.repo
         });
-        if (response.data.assignees?.length &&
-            response.data.assignees?.length > 0) {
+        if ((response.data.assignees ?? []).length > 0) {
+            core.info('The issue has already been assigned');
             return;
         }
         const assignCommand = core.getInput('assign-command');
-        if (comment.trim() === assignCommand) {
-            await octokit.rest.issues.addAssignees({
-                assignees: [commenter],
-                issue_number: issueNumber,
-                owner: context.repo.owner,
-                repo: context.repo.repo
-            });
-            core.info(`Assigned issue #${issueNumber} to ${commenter}`);
+        if (comment.trim() !== assignCommand) {
+            core.info('Skipped assignment as comment text does not match the assign command');
+            return;
         }
+        await octokit.rest.issues.addAssignees({
+            assignees: [commenter],
+            issue_number: issueNumber,
+            owner: context.repo.owner,
+            repo: context.repo.repo
+        });
+        core.info(`Assigned issue #${issueNumber} to ${commenter}`);
     }
     catch (error) {
         if (error instanceof Error)
