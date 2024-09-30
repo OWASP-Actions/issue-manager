@@ -36,6 +36,7 @@ module.exports = {
     'import/no-namespace': 'off',
     'no-console': 'off',
     'no-unused-vars': 'off',
+    'no-extra-semi': 'off',
     semi: 'off',
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/await-thenable': 'error',
@@ -72,6 +73,7 @@ module.exports = {
     '@typescript-eslint/require-array-sort-compare': 'error',
     '@typescript-eslint/restrict-plus-operands': 'error',
     '@typescript-eslint/space-before-function-paren': 'off',
-    '@typescript-eslint/unbound-method': 'error'
+    '@typescript-eslint/unbound-method': 'error',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }
