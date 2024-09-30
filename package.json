@@ -1,7 +1,7 @@
 {
   "name": "owasp-actions-issue-manager",
   "description": "OWASP Issue Manager GitHub Action",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Arkadii Yakovets",
   "private": true,
   "homepage": "https://github.com/owasp-actions/issue-manager",
