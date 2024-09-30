@@ -31,7 +31,7 @@
     "coverage": "npx make-coverage-badge --output-path ./badges/coverage.svg",
     "format:check": "npx prettier --check .",
     "format:write": "npx prettier --write .",
-    "lint": "npx eslint . -c ./.github/linters/.eslintrc.js",
+    "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
     "package:watch": "npm run package -- --watch",
     "package": "npx ncc build src/index.ts -o dist --source-map --license licenses.txt",
     "test": "npx jest"
