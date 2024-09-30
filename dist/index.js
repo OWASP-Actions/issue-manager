@@ -29249,6 +29249,16 @@ async function run() {
             core.setFailed('Issue number, comment, or commenter is missing');
             return;
         }
+        const response = await octokit.rest.issues.get({
+            issue_number: issueNumber,
+            owner: context.repo.owner,
+            repo: context.repo.repo
+        });
+        if (response.data.assignees?.length &&
+            response.data.assignees?.length > 0) {
+            core.setFailed('The issue has already been assigned');
+            return;
+        }
         const assignCommand = core.getInput('assign-command');
         if (comment.trim() === assignCommand) {
             await octokit.rest.issues.addAssignees({
