@@ -37,6 +37,14 @@
     "test": "npx jest"
   },
   "license": "MIT",
+  "eslintConfig": {
+    "ignorePatterns": [
+      "coverage/*",
+      "dist/*",
+      "lib/*",
+      "node_modules/*"
+    ]
+  },
   "jest": {
     "clearMocks": true,
     "preset": "ts-jest",
