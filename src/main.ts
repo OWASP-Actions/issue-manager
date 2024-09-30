@@ -32,7 +32,6 @@ export async function run(): Promise<void> {
       response.data.assignees?.length &&
       response.data.assignees?.length > 0
     ) {
-      core.setFailed('The issue has already been assigned')
       return
     }
 
