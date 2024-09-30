@@ -1,56 +1,60 @@
-env:
-  node: true
-  es6: true
-  jest: true
-
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-
-ignorePatterns:
-  - '!.*'
-  - '**/node_modules/.*'
-  - '**/dist/.*'
-  - '**/coverage/.*'
-  - '*.json'
-
-parser: '@typescript-eslint/parser'
-
-parserOptions:
-  ecmaVersion: 2023
-  sourceType: module
-  project:
-    - './.github/linters/tsconfig.json'
-    - './tsconfig.json'
-
-plugins:
-  - jest
-  - '@typescript-eslint'
-
-extends:
-  - eslint:recommended
-  - plugin:@typescript-eslint/eslint-recommended
-  - plugin:@typescript-eslint/recommended
-  - plugin:jest/recommended
-
-rules:
-  {
-    'camelcase': 'off',
+module.exports = {
+  env: {
+    node: true,
+    es6: true,
+    jest: true,
+  },
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  ignorePatterns: [
+    '!.*',
+    '**/node_modules/.*',
+    '**/dist/.*',
+    '**/coverage/.*',
+    '*.json',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2023,
+    sourceType: 'module',
+    project: [
+      './.github/linters/tsconfig.json',
+      './tsconfig.json',
+    ],
+  },
+  plugins: [
+    'jest',
+    '@typescript-eslint',
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jest/recommended',
+  ],
+  rules: {
+    camelcase: 'off',
     'eslint-comments/no-use': 'off',
     'eslint-comments/no-unused-disable': 'off',
     'i18n-text/no-en': 'off',
     'import/no-namespace': 'off',
     'no-console': 'off',
     'no-unused-vars': 'off',
-    'semi': 'off',
+    semi: 'off',
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/explicit-member-accessibility':
-      ['error', { 'accessibility': 'no-public' }],
-    '@typescript-eslint/explicit-function-return-type':
-      ['error', { 'allowExpressions': true }],
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error',
+      { accessibility: 'no-public' },
+    ],
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      { allowExpressions: true },
+    ],
     '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-empty-interface': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
@@ -74,5 +78,6 @@ rules:
     '@typescript-eslint/require-array-sort-compare': 'error',
     '@typescript-eslint/restrict-plus-operands': 'error',
     '@typescript-eslint/space-before-function-paren': 'off',
-    '@typescript-eslint/unbound-method': 'error'
-  }
+    '@typescript-eslint/unbound-method': 'error',
+  },
+};
