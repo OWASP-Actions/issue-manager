@@ -1,0 +1,26 @@
+name: Issue Manager
+
+description: |
+  Assign an issue when a user comments with `/assign` or similar meaning text.
+  Unassign users after a certain time of inactivity.
+
+author: Arkadii Yakovets
+
+inputs:
+  assign-command:
+    default: /assign
+    description: Assignment request command
+    required: false
+
+  max-issues-per-user:
+    default: '2'
+    description: Maximum number of issues a user can be assigned to
+    required: false
+
+  token:
+    description: GitHub token to authenticate API requests
+    required: true
+
+runs:
+  main: dist/index.js
+  using: node20
